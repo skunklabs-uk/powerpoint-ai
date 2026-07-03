@@ -223,6 +223,8 @@ Before moving from Markdown planning artifacts to PPTX generation, ask the user 
 
 For software-development estimates, use `.codex/skills/software-delivery-estimation/SKILL.md` to produce delivery phases, effort ranges, role mix, dependencies, risks, and estimate assumptions. These estimates are delivery inputs, not binding pricing.
 
+When the slide plan requires a WBS, Work Breakdown Structure, deliverable breakdown, work-package view, or operational scope decomposition, use `.codex/skills/wbs-generation/SKILL.md`. The WBS must be source-grounded, deliverable-oriented, and distinct from roadmap, macro Gantt, backlog, and implementation task list.
+
 For executive proposal decks, distinguish the strategic evolution roadmap from the implementation macro plan. The roadmap explains how the product, service, or capability evolves over releases and business cases. The macro plan explains feasible delivery phases, indicative ranges, milestones, releases, replanning points, and run/maintenance where relevant. When `docs/gantt.pdf` is available, use it as the planning reference for the macro plan. Do not turn the macro-plan slide into a detailed WBS or a list of individual implementation tasks unless the user explicitly asks for an operational plan.
 
 ## 6. Build
@@ -238,90 +240,3 @@ Create or update the `.pptx`:
 - save final deliverables in the relevant presentation folder.
 
 Do not overwrite existing files without confirmation.
-
-## 7. Verify
-
-Run the mandatory final gate in this order:
-
-1. `Critic`: adversarial critique of the artifact. Look for missing content, hidden assumptions, weak storyline transitions, unsupported claims, unclear executive meaning, and anything that would confuse CEO/CTO readers.
-2. `Review`: formal quality review against this pipeline and the relevant skills.
-3. `Humanize`: final text pass to make the language natural, readable, and less mechanical without changing facts, assumptions, constraints, or source grounding.
-
-If `Critic` or `Review` finds a material issue, fix it and rerun the relevant check before handoff.
-
-The formal quality review must cover:
-
-- storyline coverage;
-- explicit coverage of `Contesto / Esigenza / Obiettivi`;
-- for POC/repo-derived decks, explicit coverage of what the current solution does, how it works, what it produces, its limits, and its evolution path;
-- source grounding;
-- assumptions and open questions;
-- executive clarity;
-- commercial tone;
-- visual consistency;
-- respect for selected creative guardrails and documented freedom level;
-- readability;
-- package integrity;
-- no accidental content copied from references;
-- presentation folder, deliverable location, and filename.
-
-For generated `.pptx` files, validate package integrity when practical.
-
-Use `.codex/skills/pptx-package-validation/SKILL.md` as the technical delivery gate for generated, repaired, or heavily modified `.pptx` files.
-
-## 8. Handoff
-
-Final response or handoff notes should include:
-
-- output file path;
-- presentation folder;
-- major content decisions;
-- assumptions left in the deck;
-- open questions;
-- validation performed;
-- residual risks or manual PowerPoint checks needed.
-
-# Quality Gates
-
-## Gate A: Intake Complete
-
-Passes when:
-
-- material inventory is clear;
-- target deck type and audience are clear;
-- critical gaps have been asked or explicitly accepted by the user.
-- assumptions used to proceed have been disclosed to the user, not only written in the artifact.
-
-## Gate B: Storyline Grounded
-
-Passes when:
-
-- the five standard sections are present or intentionally adapted;
-- `Contesto ed esigenza/obiettivi` is explicit and not hidden inside a generic context slide;
-- for POC/repo-derived decks, the reader can understand the current solution's function, mechanism, outputs, limits, and evolution path before seeing roadmap/economics;
-- each slide has a source or declared assumption;
-- unsupported claims are removed or marked.
-- repeated slides have been fused or justified;
-- CEO-facing initiative slides state value, evidence, next steps, decision needs, and sizing/economics gaps.
-- unasked questions are clearly labeled as open questions, not approval already obtained.
-
-## Gate C: Visual System Applied
-
-Passes when:
-
-- visual references were inspected fresh;
-- brand guardrails and source-deck/template language are explicit;
-- each major slide type has a slide brief and creative freedom level;
-- strict visual pattern matching is required only where the brief marks `Creative freedom: Low`;
-- text remains readable;
-- visual elements are editable where practical.
-
-## Gate D: Deliverable Validated
-
-Passes when:
-
-- the output exists in the dedicated presentation folder;
-- PowerPoint package integrity is checked;
-- remaining assumptions are explicit;
-- final `Critic`, `Review`, and `Humanize` passes have been completed for the delivered artifact;
-- final report lists validation and residual risk.

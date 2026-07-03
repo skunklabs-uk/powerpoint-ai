@@ -122,7 +122,7 @@ If an activity is necessary, rephrase it as the artifact or decision it produces
 
 When producing a WBS artifact, use:
 
-```markdown
+````markdown
 # WBS del progetto
 
 ## 1. Sintesi del perimetro
@@ -155,7 +155,7 @@ Brief source-grounded description of the project.
 
 ## 8. Uso consigliato della WBS
 Explain how to use it for effort estimation, responsibility matrix, roadmap, Gantt, milestones, testing, and economics.
-```
+````
 
 ## Output For WBS Slide Brief
 

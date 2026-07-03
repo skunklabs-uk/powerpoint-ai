@@ -1,13 +1,13 @@
 ---
 name: wbs-generation
-description: Use when a deck, proposal, business case, PMO artifact, or project documentation needs a Work Breakdown Structure, WBS slide, deliverable breakdown, work-package structure, or scope decomposition derived from project documentation.
+description: Use for every standard TXT/Novigo proposal or business-case deck to derive a Work Breakdown Structure from project documentation and create the WBS slide/section required by the standard storyline. Also use for PMO artifacts, deliverable breakdowns, work-package structures, or scope decompositions.
 ---
 
 # WBS Generation
 
 ## Purpose
 
-Create a source-grounded **Work Breakdown Structure (WBS)** from project documentation and convert it into an executive-ready slide brief when a deck needs a WBS slide.
+Create a source-grounded **Work Breakdown Structure (WBS)** from project documentation and convert it into an executive-ready slide brief for the WBS section of a standard TXT/Novigo deck.
 
 Act as both:
 
@@ -16,30 +16,45 @@ Act as both:
 
 The WBS must describe the **structure of work and deliverables**, not the chronological plan. It is not a Gantt, roadmap, backlog, task list, or meeting agenda.
 
+## Standard Deck Rule
+
+For standard TXT/Novigo proposals and business cases, produce a WBS view as part of the deck planning by default.
+
+This follows `docs/reference.1.md`, where the standard storyline includes a WBS inside the TO BE section:
+
+- for a **new application**, create a new WBS;
+- for an **existing application**, create a WBS limited to the modified section or affected scope;
+- in the work-plan section, releases and milestones should connect back to the WBS after analysis.
+
+The WBS slide may be compact, executive, or appendix-level depending on project size, but it must not disappear silently from the deck plan. If the source material is too thin to build a credible WBS, create a placeholder WBS slide brief with explicit assumptions and open questions rather than inventing scope.
+
 ## Required Reads
 
 Read:
 
 1. `AGENTS.md`
-2. `.codex/deck-pipeline.md`
-3. `.codex/skills/business-case-storyline/SKILL.md`
-4. `.codex/skills/software-delivery-estimation/SKILL.md` when the WBS affects effort, timeline, or economics
-5. `.codex/skills/executive-slide-writing/SKILL.md` when turning the WBS into slide text
-6. project-specific source materials in the relevant `yyyy-mm-dd-<project-name>/source-materials/` folder
-7. project-specific drafts, briefs, handoffs, or prompts when available
+2. `docs/reference.1.md`
+3. `.codex/deck-pipeline.md`
+4. `.codex/skills/business-case-storyline/SKILL.md`
+5. `.codex/skills/software-delivery-estimation/SKILL.md` when the WBS affects effort, timeline, or economics
+6. `.codex/skills/executive-slide-writing/SKILL.md` when turning the WBS into slide text
+7. project-specific source materials in the relevant `yyyy-mm-dd-<project-name>/source-materials/` folder
+8. project-specific drafts, briefs, handoffs, or prompts when available
 
 Use only source material and explicit user instructions as facts. Reasonable missing elements may be recorded as assumptions or clarification points, but must not be presented as confirmed scope.
 
 ## When To Use
 
-Use this skill when:
+Use this skill by default for standard proposal/business-case deck planning, because the reference storyline expects a WBS view in the TO BE / planning flow.
+
+Also use it when:
 
 - the user explicitly asks for a WBS;
 - a slide plan includes a `WBS`, `Work Breakdown Structure`, `deliverable breakdown`, `scope breakdown`, `work package`, or `operational plan` slide;
 - a deck needs to explain project scope at a level more detailed than a roadmap or macro implementation plan;
 - source documentation must be converted into a planning structure for estimation, responsibilities, milestones, or Gantt construction.
 
-Do **not** use this skill automatically for every `Piano di lavoro` slide. For executive proposal decks, the default planning slide should stay macro-level unless the user asks for a WBS or the storyline clearly requires scope decomposition.
+For very small or early-stage decks, keep the WBS slide at executive level: macro-areas, key deliverables, and validation points. Do not over-engineer it into a task tree unless the user asks for an operational WBS.
 
 ## Core Principles
 
@@ -117,6 +132,7 @@ If an activity is necessary, rephrase it as the artifact or decision it produces
 6. Check for missing areas, duplication, inconsistent granularity, and unsupported scope.
 7. Validate the WBS against downstream uses: effort, responsibility matrix, roadmap, Gantt, milestones, testing, and economics.
 8. When creating a slide, compress the WBS into a readable executive view without losing the logic.
+9. Link the macro plan, releases, or milestones back to WBS items when the deck includes a `Piano di lavoro`.
 
 ## Output For Planning Artifact
 
@@ -159,7 +175,7 @@ Explain how to use it for effort estimation, responsibility matrix, roadmap, Gan
 
 ## Output For WBS Slide Brief
 
-When the deck needs a WBS slide, produce a slide brief like this:
+For standard decks, produce a WBS slide brief. Use a compact version when the project is small or when the WBS is still pre-analysis.
 
 ```markdown
 ## Slide: WBS del progetto — dal perimetro ai work package stimabili
@@ -186,6 +202,7 @@ Use one of these patterns depending on density:
 - Clarify that this is not the timeline.
 - Explain which parts are confirmed and which require validation.
 - Point out scope areas that may affect effort or economics.
+- Explain how releases/milestones in the work plan link back to the WBS when applicable.
 
 ### Creative Direction
 - Keep it visual and structured: few text blocks, strong hierarchy, no wall of text.
@@ -208,6 +225,7 @@ Before finalizing, verify:
 - [ ] Missing information is visible as assumptions, exclusions, or open questions.
 - [ ] The slide version is readable by non-technical stakeholders.
 - [ ] The output can feed effort estimation and responsibility mapping.
+- [ ] Work-plan releases or milestones can be traced back to WBS items when applicable.
 
 ## Stop Conditions
 
@@ -218,3 +236,5 @@ Ask for clarification before producing a customer-facing WBS when:
 - deliverables cannot be separated from optional future work;
 - the WBS would imply costs, dates, responsibilities, or contractual commitments not approved by the user;
 - a detailed operational WBS is requested but the source documentation only supports a macro plan.
+
+If the deck must proceed despite incomplete source material, include a WBS slide with explicit `assunzioni da validare` and `punti aperti`, rather than omitting the WBS.

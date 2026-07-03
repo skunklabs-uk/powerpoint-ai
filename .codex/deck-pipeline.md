@@ -137,6 +137,12 @@ For software-development projects, the TO BE should connect:
 - delivery approach;
 - operational and business impact.
 
+For standard TXT/Novigo proposal and business-case decks, the TO BE must include a WBS view derived from `.codex/skills/wbs-generation/SKILL.md`:
+
+- for a new application, create a new WBS;
+- for an existing application, create a WBS focused on the modified section or affected scope;
+- if source material is incomplete, keep the WBS slide in the plan and mark assumptions/open points instead of omitting it.
+
 Slide titles must state the message of the slide, not only the section label.
 
 Use `.codex/skills/executive-slide-writing/SKILL.md` when drafting or compressing slide language.
@@ -182,6 +188,7 @@ Creative direction must map the actual slide plan to `docs/ui/` reference famili
 - `Contesto / Esigenza / Obiettivi`;
 - AS IS / architecture or process;
 - TO BE / target architecture or scenario;
+- WBS / deliverable breakdown;
 - roadmap / piano di lavoro;
 - economics;
 - decision / next steps.
@@ -210,7 +217,7 @@ Before generating or heavily editing a deck, produce a short plan when the chang
 The plan should include:
 
 - proposed slide structure;
-- section coverage;
+- section coverage, including the WBS view required by the standard deck storyline;
 - source mapping;
 - assumptions;
 - open questions;
@@ -223,7 +230,7 @@ Before moving from Markdown planning artifacts to PPTX generation, ask the user 
 
 For software-development estimates, use `.codex/skills/software-delivery-estimation/SKILL.md` to produce delivery phases, effort ranges, role mix, dependencies, risks, and estimate assumptions. These estimates are delivery inputs, not binding pricing.
 
-When the slide plan requires a WBS, Work Breakdown Structure, deliverable breakdown, work-package view, or operational scope decomposition, use `.codex/skills/wbs-generation/SKILL.md`. The WBS must be source-grounded, deliverable-oriented, and distinct from roadmap, macro Gantt, backlog, and implementation task list.
+Use `.codex/skills/wbs-generation/SKILL.md` during standard deck planning to create the WBS view required by the TXT/Novigo storyline. The WBS must be source-grounded, deliverable-oriented, and distinct from roadmap, macro Gantt, backlog, and implementation task list. For small or early-stage decks, create a compact executive WBS with assumptions/open points rather than dropping the slide.
 
 For executive proposal decks, distinguish the strategic evolution roadmap from the implementation macro plan. The roadmap explains how the product, service, or capability evolves over releases and business cases. The macro plan explains feasible delivery phases, indicative ranges, milestones, releases, replanning points, and run/maintenance where relevant. When `docs/gantt.pdf` is available, use it as the planning reference for the macro plan. Do not turn the macro-plan slide into a detailed WBS or a list of individual implementation tasks unless the user explicitly asks for an operational plan.
 

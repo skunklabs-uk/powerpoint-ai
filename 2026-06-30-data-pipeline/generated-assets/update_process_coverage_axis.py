@@ -5,14 +5,14 @@ from pathlib import Path
 
 from pptx import Presentation
 from pptx.dml.color import RGBColor
-from pptx.enum.shapes import MSO_SHAPE_TYPE
+from pptx.enum.shapes import MSO_SHAPE, MSO_SHAPE_TYPE
 from pptx.enum.text import MSO_ANCHOR, PP_ALIGN
 from pptx.util import Inches, Pt
 
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "Data pipeline blueprint v3.pptx"
-OUTPUT = ROOT / "attempts" / "Data pipeline blueprint v4 - coverage axis.pptx"
+OUTPUT = ROOT / "attempts" / "Data pipeline blueprint v5 - coverage definitions.pptx"
 
 FONT = "Poppins"
 MUTED = RGBColor(100, 113, 122)
@@ -32,6 +32,11 @@ STYLES = {
         "label": "ESTENSIONE",
         "fill": RGBColor(253, 247, 233),
         "accent": RGBColor(220, 160, 55),
+    },
+    "uncovered": {
+        "label": "NON COPERTO",
+        "fill": RGBColor(242, 244, 245),
+        "accent": RGBColor(128, 140, 148),
     },
 }
 
@@ -119,38 +124,108 @@ def update_title(slide):
 
 
 def update_legend(slide):
-    legend = slide.shapes[31].shapes[1]
-    labels = [
-        ("Copertura diretta", STYLES["direct"]["accent"]),
-        ("Configurazione", STYLES["config"]["accent"]),
-        ("Estensione / integrazione", STYLES["extension"]["accent"]),
+    old_legend = slide.shapes[31]
+    old_legend.element.getparent().remove(old_legend.element)
+
+    divider = slide.shapes.add_shape(
+        MSO_SHAPE.RECTANGLE, Inches(0.76), Inches(6.39), Inches(11.48), Inches(0.008)
+    )
+    divider.fill.solid()
+    divider.fill.fore_color.rgb = RGBColor(218, 228, 233)
+    divider.line.fill.background()
+
+    add_text(
+        slide,
+        0.76,
+        6.44,
+        0.78,
+        0.18,
+        "LEGENDA",
+        7.6,
+        MUTED,
+        True,
+    )
+    add_text(
+        slide,
+        8.52,
+        6.24,
+        3.72,
+        0.16,
+        "* capacità da verificare: edizione, licenza o componente da confermare",
+        6.3,
+        STYLES["extension"]["accent"],
+        True,
+        PP_ALIGN.RIGHT,
+    )
+
+    definitions = [
+        (
+            "DIRETTA",
+            "Funzione disponibile con i componenti previsti",
+            STYLES["direct"]["accent"],
+        ),
+        (
+            "CONFIGURAZIONE",
+            "Richiede parametri, regole o impostazioni",
+            STYLES["config"]["accent"],
+        ),
+        (
+            "ESTENSIONE",
+            "Richiede sviluppo, connettori o integrazioni aggiuntive",
+            STYLES["extension"]["accent"],
+        ),
+        (
+            "NON COPERTO",
+            "Funzione esterna al perimetro della soluzione",
+            STYLES["uncovered"]["accent"],
+        ),
     ]
 
-    for group, (text, color) in zip(legend.shapes, labels):
-        dot = group.shapes[0]
-        text_box = group.shapes[1]
+    start_x = 1.62
+    item_width = 2.64
+    for index, (label, description, color) in enumerate(definitions):
+        x = start_x + index * item_width
+        dot = slide.shapes.add_shape(
+            MSO_SHAPE.OVAL, Inches(x), Inches(6.49), Inches(0.11), Inches(0.11)
+        )
         dot.fill.solid()
         dot.fill.fore_color.rgb = color
         dot.line.fill.background()
-        set_single_run_text(text_box, text, MUTED)
+        add_text(slide, x + 0.17, 6.43, 2.36, 0.18, label, 7.3, color, True)
+        add_text(slide, x + 0.17, 6.61, 2.33, 0.34, description, 6.7, MUTED)
 
-    note = slide.shapes.add_textbox(
-        Inches(10.42), Inches(6.735), Inches(1.95), Inches(0.22)
-    )
-    note.text_frame.clear()
-    note.text_frame.margin_left = 0
-    note.text_frame.margin_right = 0
-    note.text_frame.margin_top = 0
-    note.text_frame.margin_bottom = 0
-    note.text_frame.vertical_anchor = MSO_ANCHOR.MIDDLE
-    paragraph = note.text_frame.paragraphs[0]
-    paragraph.alignment = PP_ALIGN.LEFT
+        if index < len(definitions) - 1:
+            separator = slide.shapes.add_shape(
+                MSO_SHAPE.RECTANGLE,
+                Inches(x + 2.54),
+                Inches(6.46),
+                Inches(0.006),
+                Inches(0.49),
+            )
+            separator.fill.solid()
+            separator.fill.fore_color.rgb = RGBColor(226, 233, 237)
+            separator.line.fill.background()
+
+
+def add_text(slide, x, y, w, h, text, size, color, bold=False, align=PP_ALIGN.LEFT):
+    box = slide.shapes.add_textbox(Inches(x), Inches(y), Inches(w), Inches(h))
+    box.text_frame.clear()
+    box.text_frame.margin_left = 0
+    box.text_frame.margin_right = 0
+    box.text_frame.margin_top = 0
+    box.text_frame.margin_bottom = 0
+    box.text_frame.word_wrap = True
+    box.text_frame.vertical_anchor = MSO_ANCHOR.TOP
+    paragraph = box.text_frame.paragraphs[0]
+    paragraph.alignment = align
+    paragraph.space_after = Pt(0)
     run = paragraph.add_run()
-    run.text = "* capacità da verificare"
+    run.text = text
     run.font.name = FONT
-    run.font.size = Pt(7.5)
-    run.font.bold = True
-    run.font.color.rgb = STYLES["extension"]["accent"]
+    run.font.size = Pt(size)
+    run.font.bold = bold
+    run.font.color.rgb = color
+    return box
 
 
 def build():

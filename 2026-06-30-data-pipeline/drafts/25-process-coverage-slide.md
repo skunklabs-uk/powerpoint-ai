@@ -93,10 +93,11 @@ La revisione approvata separa la modalità di copertura dal grado di certezza.
 - `DIRETTA`: capacità disponibile con i componenti previsti.
 - `CONFIGURAZIONE`: richiede parametri, regole o impostazioni.
 - `ESTENSIONE`: richiede sviluppo, connettori o integrazioni aggiuntive.
+- `NON COPERTO`: funzione esterna al perimetro della soluzione.
 
 ### Indicatore separato
 
-L'asterisco `*` indica una capacità da verificare rispetto a edizione, licenza o componente scelto. Non costituisce una quarta modalità di copertura.
+L'asterisco `*` indica una capacità da verificare rispetto a edizione, licenza o componente scelto. Non costituisce una quinta modalità di copertura.
 
 ### Classificazione applicata
 
@@ -115,6 +116,6 @@ Il titolo della slide diventa `Modalità di copertura di ciascuna soluzione`, co
 
 ### Gate finale della revisione
 
-- **Critic:** le tre modalità sono mutuamente esclusive; l'asterisco non è trattato come uno stato alternativo; non sono introdotti punteggi o percentuali.
+- **Critic:** le quattro modalità sono mutuamente esclusive; l'asterisco non è trattato come uno stato alternativo; non sono introdotti punteggi o percentuali.
 - **Review:** la classificazione mantiene la stessa scala per AWS e Qlik e conserva il layout alleggerito dall'utente.
 - **Humanize:** etichette brevi, nominali e leggibili; eliminati `Da completare` e `Da verificare` come stati concorrenti.

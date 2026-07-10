@@ -83,3 +83,38 @@ Esito: superato.
 - Quale archivio storico deve essere usato nello scenario Qlik?
 - Quali connettori sono disponibili per le fonti reali dei progetti?
 - Quali regole, soglie, test e responsabilità devono essere approvati prima della progettazione esecutiva?
+
+## Revisione dell'asse di copertura
+
+La revisione approvata separa la modalità di copertura dal grado di certezza.
+
+### Asse principale
+
+- `DIRETTA`: capacità disponibile con i componenti previsti.
+- `CONFIGURAZIONE`: richiede parametri, regole o impostazioni.
+- `ESTENSIONE`: richiede sviluppo, connettori o integrazioni aggiuntive.
+
+### Indicatore separato
+
+L'asterisco `*` indica una capacità da verificare rispetto a edizione, licenza o componente scelto. Non costituisce una quarta modalità di copertura.
+
+### Classificazione applicata
+
+| Processo | AWS | Qlik |
+|---|---|---|
+| Fonti e acquisizione | Estensione | Diretta |
+| Conservazione degli input | Diretta | Estensione* |
+| Preparazione e mapping | Diretta | Diretta |
+| Regole, allocazioni e calcoli | Estensione | Estensione |
+| Qualità e riconciliazione | Configurazione | Configurazione |
+| Actual, Forecast e versioni | Estensione | Estensione |
+| Reporting e distribuzione | Diretta | Diretta |
+| Monitoraggio, audit e lineage | Configurazione | Configurazione* |
+
+Il titolo della slide diventa `Modalità di copertura di ciascuna soluzione`, coerente con l'asse rappresentato.
+
+### Gate finale della revisione
+
+- **Critic:** le tre modalità sono mutuamente esclusive; l'asterisco non è trattato come uno stato alternativo; non sono introdotti punteggi o percentuali.
+- **Review:** la classificazione mantiene la stessa scala per AWS e Qlik e conserva il layout alleggerito dall'utente.
+- **Humanize:** etichette brevi, nominali e leggibili; eliminati `Da completare` e `Da verificare` come stati concorrenti.

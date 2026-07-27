@@ -119,3 +119,38 @@ Il titolo della slide diventa `Modalità di copertura di ciascuna soluzione`, co
 - **Critic:** le quattro modalità sono mutuamente esclusive; l'asterisco non è trattato come uno stato alternativo; non sono introdotti punteggi o percentuali.
 - **Review:** la classificazione mantiene la stessa scala per AWS e Qlik e conserva il layout alleggerito dall'utente.
 - **Humanize:** etichette brevi, nominali e leggibili; eliminati `Da completare` e `Da verificare` come stati concorrenti.
+
+## Presenza dei processi nei progetti
+
+La slide aggiunge nei box di processo i tag dei progetti nei quali il processo è documentato. I tag non indicano che il processo sia già implementato o pronto per l'esercizio.
+
+| Processo | ProSIGNAL | Kiron CDG | CDG interno |
+|---|:---:|:---:|:---:|
+| Fonti e acquisizione | Sì | Sì | Sì |
+| Conservazione degli input | Sì | Sì | Sì |
+| Preparazione e mapping | Sì | Sì | Sì |
+| Regole, allocazioni e calcoli | Sì | Sì | Sì |
+| Qualità e riconciliazione | Sì | Sì | Sì |
+| Actual, Forecast e versioni |  | Sì | Sì |
+| Reporting e distribuzione | Sì | Sì | Sì |
+| Monitoraggio, audit e lineage |  | Sì | Sì |
+
+### Grounding
+
+- **ProSIGNAL:** acquisizione di file fixed-column, retention, parsing e mapping, controlli tecnici e cross-file, aggregazioni e output regolamentari. `Actual`, `Forecast`, monitoraggio, audit e lineage non risultano esplicitamente nel perimetro documentato.
+- **Kiron CDG:** fonti Campus/Campus 2.0/Zucchetti, normalizzazione, tabelle guida, regole RIB/STEP, riconciliazioni, Actual, Forecast, BI e monitoraggio delle elaborazioni.
+- **CDG interno:** fonti Jira/Tempo/SAP/CDG app, raw/staging/mart, mapping, processi P1-P6, quadrature, Actual/Economics/Forecast, dashboard, audit trail, logging e monitoraggio.
+
+### Grill-with-docs
+
+- `Presenza` è distinto da `modalità di copertura`: i tag descrivono i casi d'uso, le colonne AWS e Qlik descrivono la soluzione.
+- `Presenza` non equivale a stato di implementazione, readiness o maturità.
+- ProSIGNAL non viene associato ad `Actual, Forecast e versioni`; il versioning dei tracciati resta parte di data contract e mapping, non trasforma il caso in un processo CDG-like.
+- ProSIGNAL non viene associato a `Monitoraggio, audit e lineage`: è una capability ragionevole per il contesto regolamentare, ma non è confermata dai materiali disponibili.
+- Non vengono aggiunti tag `N/A`: l'assenza del tag comunica che il processo non è documentato per quel caso.
+
+### Gate finale dei tag progetto
+
+- **Critic:** i due assi della slide restano separati; nessun tag è usato come indicatore di copertura tecnologica o avanzamento.
+- **Review:** i tag derivano dalle analisi di progetto e mantengono il confronto AWS/Qlik invariato.
+- **Humanize:** nomi progetto espliciti, nota breve e nessun gergo aggiuntivo.

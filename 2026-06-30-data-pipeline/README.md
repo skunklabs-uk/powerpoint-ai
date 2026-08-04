@@ -19,9 +19,19 @@ Preparare una presentazione executive/technical blueprint che spieghi come costr
 
 ## Stato
 
-- Scaffolding creato.
-- Primo materiale locale raccolto da `cdg-data-pipeline`, `cdg-data-pipeline-docs`, `tools` e Obsidian TXT Novigo.
-- Sintesi iniziale dei casi CDG/ProSignal disponibile in `drafts/03-use-case-synthesis.md`.
-- Kiron resta un beneficiario target senza materiale locale specifico recuperato.
-- Nessun PowerPoint generato.
-- Prossimo passo: completare il dossier `Repo to Deck Brief` e classificare i gap bloccanti prima della storyline.
+- Versione PowerPoint di riferimento: `Data pipeline blueprint v5.pptx`.
+- Recap C-level: `Data pipeline comparison C-level v2.xlsx`.
+- Preview per le slide: i cinque file `generated-assets/Slide recap *.png`.
+- Le fonti, i materiali di progetto e le note di confronto restano disponibili per mantenere il grounding della versione corrente.
+- Versioni precedenti, export intermedi, workbook dettagliato e candidate visuali sono stati spostati in `attempts/archive/`.
+
+## Archivio
+
+`attempts/archive/` conserva i materiali non necessari alla versione corrente senza cancellarli:
+
+- `legacy-decks/`: v2, v3 e v4 del PowerPoint;
+- `legacy-exports/`: PDF e immagini di export precedenti;
+- `legacy-workbooks/`: workbook dettagliato superato dal recap C-level;
+- `legacy-recaps/`: varianti precedenti delle preview;
+- `legacy-generators/`: generatori e render intermedi delle versioni precedenti;
+- `dashboard-showcase-candidates/`: immagini candidate non utilizzate nella slide attuale.

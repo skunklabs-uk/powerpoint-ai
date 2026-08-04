@@ -1,9 +1,9 @@
 # NOVA – Decision Pack per la presentazione Guber del 31 luglio 2026
 
-**Versione:** finale – cinque scenari di collocazione, replica read-only accettata da Guber e integrazione grill-with-docs  
+**Versione:** finale – sei scenari organizzati in due strategie, replica read-only accettata da Guber e integrazione grill-with-docs
 **Data di preparazione:** 27 luglio 2026  
 **Destinazione:** materiale sorgente per presentazione PowerPoint e successivo modello economico  
-**Focus:** confronto dei cinque scenari di collocazione del database NOVA e dell’Application Maintenance applicata a ciascuno, con costi, vantaggi, svantaggi, rischi e decisioni richieste
+**Focus:** confronto di sei scenari organizzati in due strategie: collocazione del database primario oppure mantenimento del primario attuale con replica read-only presso Guber; l’Application Maintenance è applicata trasversalmente a ciascuno scenario, con costi, vantaggi, svantaggi, rischi e decisioni richieste
 
 > **Avvertenza economica:** gli importi riportati sono **range di pianificazione**, non preventivi. Sono costruiti su ipotesi esplicite e fonti pubbliche ufficiali per i servizi cloud. Devono essere ricalcolati quando saranno disponibili motore e versione del database, dimensionamento, SLA, volumi, licenze, contratti Azure/AWS e capacità infrastrutturale Guber.
 
@@ -14,7 +14,7 @@
 Questo documento raccoglie e organizza tutte le informazioni disponibili per costruire una presentazione che consenta, durante l'incontro del **31 luglio 2026**, di:
 
 1. rappresentare la richiesta di Guber sull'accesso diretto ai dati NOVA, assumendo come accettato l'accesso a una replica read-only;
-2. confrontare in modo omogeneo i cinque scenari di collocazione: infrastruttura attuale, Azure Guber, AWS Guber, on-premise Guber e database primario attuale con replica read-only presso Guber;
+2. confrontare in modo omogeneo **sei scenari organizzati in due strategie**: la Strategia A confronta la collocazione del database primario (infrastruttura attuale, Azure Guber, AWS Guber e on-premise Guber); la Strategia B mantiene il primario attuale e colloca una replica read-only presso Guber, rispettivamente on-premise o su Azure Guber;
 3. valutare impatti su storage documentale, sicurezza, gestione delle chiavi e orchestratore;
 4. fornire una prima quantificazione economica, distinguendo costi una tantum, costi ricorrenti e voci ancora da stimare;
 5. arrivare a decisioni, oppure almeno a una selezione preferenziale e a un piano di approfondimento con responsabilità e tempi;
@@ -109,8 +109,8 @@ La presentazione deve evitare il prodotto cartesiano di tutte le combinazioni, m
 
 | Area da coprire | Stato finale |
 |---|---|
-| Hosting/ownership | coperta con cinque scenari |
-| Accesso SQL | coperto con database primario read-only oppure replica read-only presso Guber |
+| Hosting/ownership | coperta con sei scenari organizzati in due strategie |
+| Accesso SQL | coperto con database primario read-only oppure con replica read-only on-premise Guber o su Azure Guber |
 | Run operativo | coperto trasversalmente con AM completa e gestione Guber/terzo |
 | Compatibilità DB | coperta tramite gate PaaS vs VM/self-managed |
 | Storage documentale | coperto come decisione AWS S3 vs requisito generico object storage |
@@ -135,7 +135,7 @@ La presentazione deve evitare il prodotto cartesiano di tutte le combinazioni, m
 
 La ricerca di ipotesi mancanti resta limitata alla **collocazione fisica o logica del database NOVA** e alle modalità di replica e accesso ai suoi dati. Non costituiscono scenari autonomi nuovi applicativi, orchestratori aggiuntivi, sistemi di ingestion o evoluzioni funzionali di NOVA.
 
-L’Application Maintenance è un **asse operativo trasversale**: per ciascuno dei cinque scenari devono essere valutati costi, vantaggi e svantaggi della gestione completa Novigo e, dove previsto, della gestione Guber o di un terzo.
+L’Application Maintenance è un **asse operativo trasversale**: per ciascuno dei sei scenari devono essere valutati costi, vantaggi e svantaggi della gestione completa Novigo e della gestione Guber o di un terzo.
 
 ## 3.2 Classificazione delle evidenze
 
@@ -145,17 +145,18 @@ L’Application Maintenance è un **asse operativo trasversale**: per ciascuno d
 | Azure Guber | agenda: «migrazione su Azure Guber» | esplicitamente derivato dai documenti |
 | AWS Guber | conferma fornita in conversazione | scenario confermato dall’utente, non ritrovato nel corpus GitHub disponibile |
 | On-premise Guber | agenda: «migrazione su infrastruttura Guber on-premise» | esplicitamente derivato dai documenti |
-| Primario attuale + replica read-only presso Guber | combinazione tra permanenza attuale e requisito di accesso SQL | deduzione architetturale inizialmente proposta come speculazione; accesso alla replica read-only successivamente accettato da Guber |
+| Replica read-only on-premise Guber | combinazione tra permanenza attuale e requisito di accesso SQL; replica collocata nell’infrastruttura on-premise Guber | deduzione architetturale inizialmente proposta come speculazione; accesso alla replica read-only successivamente accettato da Guber |
+| Replica read-only su Azure Guber | combinazione tra permanenza attuale e requisito di accesso SQL; replica collocata nel tenant Azure Guber | deduzione architetturale inizialmente proposta come speculazione; accesso alla replica read-only successivamente accettato da Guber |
 
 ## 3.3 Esito della verifica documentale
 
-Non sono emerse altre collocazioni del database esplicitamente richieste dalle fonti disponibili. Il quinto scenario è l’unica alternativa aggiuntiva direttamente pertinente al perimetro: mantiene il database transazionale nell’infrastruttura attuale e colloca presso Guber una replica read-only interrogabile via SQL.
+Non sono emerse altre collocazioni del database esplicitamente richieste dalle fonti disponibili. La Strategia B separa l’unica alternativa aggiuntiva direttamente pertinente al perimetro in due scenari: mantiene il database transazionale nell’infrastruttura attuale e colloca una replica read-only interrogabile via SQL nell’infrastruttura on-premise Guber oppure nel tenant Azure Guber.
 
 Restano varianti implementative, e non scenari ulteriori:
 
 - servizio database gestito oppure database su VM/EC2;
 - replica completa, schema di reporting o viste certificate;
-- collocazione AWS, Azure oppure on-premise della replica Guber;
+- collocazione on-premise oppure Azure della replica Guber;
 - gestione completa Novigo oppure gestione Guber/terza parte;
 - gestione delle chiavi, networking, SLA, backup e disaster recovery.
 
@@ -169,7 +170,7 @@ Per il presente decision pack si assume come **accettato da Guber** l’accesso 
 
 La presentazione dovrebbe chiedere al tavolo di decidere, o almeno indirizzare, i seguenti punti:
 
-1. **Target preferito** tra i cinque scenari: infrastruttura attuale, Azure Guber, AWS Guber, on-premise Guber e primario attuale con replica read-only presso Guber.
+1. **Target preferito** tra i sei scenari organizzati in due strategie: primario su infrastruttura attuale, Azure Guber, AWS Guber o on-premise Guber; oppure primario attuale con replica read-only on-premise Guber o su Azure Guber.
 2. **Modalità di accesso SQL**: la replica read-only è accettata; devono essere definiti aggiornamento, viste/schema esposti, auditing e accessi amministrativi eccezionali.
 3. **Ownership operativa e modello di servizio**: chi gestisce database, backup, monitoraggio, patch, incidenti, capacity planning e Application Maintenance; per AWS, scegliere esplicitamente tra AM Novigo e gestione Guber/terza parte.
 4. **Ownership delle chiavi**: Guber, fornitore, responsabilità condivisa o modello con doppio controllo.
@@ -179,7 +180,7 @@ La presentazione dovrebbe chiedere al tavolo di decidere, o almeno indirizzare, 
 
 ---
 
-# 5. Requisiti minimi da usare per confrontare i cinque scenari
+# 5. Requisiti minimi da usare per confrontare i sei scenari
 
 ## 5.1 Accesso ai dati
 
@@ -271,7 +272,11 @@ Per rendere confrontabili gli scenari viene adottato un **carico di riferimento*
 
 ---
 
-# 7. Scenario 1 – Permanenza sull'infrastruttura attuale
+# 7. Strategia A — Collocazione del database primario
+
+Questa strategia confronta quattro possibili collocazioni del database primario NOVA. Non confronta quattro cloud: distingue il mantenimento nell’infrastruttura attuale dal trasferimento del primario nel perimetro Azure Guber, AWS Guber o on-premise Guber.
+
+## Scenario 01 — Permanenza sull'infrastruttura attuale
 
 ## 7.1 Provenienza e classificazione
 
@@ -301,7 +306,7 @@ Possibili modalità interne allo stesso scenario:
 2. replica read-only nell'ambiente attuale;
 3. schema o viste certificate per Guber.
 
-La replica presso Guber è trattata separatamente nello scenario 5.
+Le repliche presso Guber sono trattate separatamente negli scenari 05 e 06.
 
 ## 7.4 Sicurezza e chiavi
 
@@ -390,7 +395,7 @@ L'AM Novigo comprende l'intera gestione dell'ambiente e dei servizi. Va valorizz
 
 ---
 
-# 8. Scenario 2 – Migrazione su Azure Guber
+## Scenario 02 — Migrazione su Azure Guber
 
 ## 8.1 Provenienza e classificazione
 
@@ -523,7 +528,7 @@ Senza AM:
 
 ---
 
-# 9. Scenario 3 – Account AWS di proprietà Guber
+## Scenario 03 — Account AWS di proprietà Guber
 
 ## 9.1 Provenienza e classificazione
 
@@ -724,7 +729,7 @@ Il TCO deve usare una sola delle due righe alternative:
 
 ---
 
-# 10. Scenario 4 – Migrazione su infrastruttura Guber on-premise
+## Scenario 04 — Migrazione su infrastruttura Guber on-premise
 
 ## 10.1 Provenienza e classificazione
 
@@ -851,40 +856,30 @@ Senza AM:
 
 ---
 
-# 11. Scenario 5 – Database primario attuale e replica read-only presso Guber
+# 11. Strategia B — Primario attuale + replica read-only presso Guber
 
-## 11.1 Provenienza e classificazione
+Questa strategia non confronta ulteriori cloud: mantiene invariato il database primario nell’infrastruttura attuale e soddisfa il requisito dati con una replica read-only presso Guber. Le sole collocazioni valutate per la replica sono on-premise Guber e Azure Guber.
 
-Lo scenario deriva dalla combinazione tra:
+## Scenario 05 — Replica read-only on-premise Guber
 
-- permanenza sull'infrastruttura attuale;
-- esigenza di accesso SQL;
-- accettazione Guber dell'accesso a replica read-only.
+### 11.1 Provenienza e classificazione
+
+Lo scenario deriva dalla combinazione tra permanenza sull'infrastruttura attuale, esigenza di accesso SQL e accettazione Guber dell'accesso a replica read-only.
 
 **Classificazione:** deduzione architetturale successivamente accettata da Guber.
 
-## 11.2 Architettura e collocazione
+### 11.2 Architettura e collocazione
 
-- database primario NOVA nell'infrastruttura attuale;
-- replica read-only presso Guber;
-- collocazione della replica su AWS, Azure o on-premise Guber;
+- database primario NOVA nell'infrastruttura attuale, invariato;
+- replica read-only nell'infrastruttura on-premise Guber;
+- Guber accede localmente via SQL esclusivamente alla replica;
 - sincronizzazione tramite tecnologia compatibile con il motore;
-- accesso SQL degli utenti Guber esclusivamente alla replica;
 - monitoring di replica, lag e consistenza;
 - procedure di rebuild e recovery.
 
-## 11.3 Accesso SQL accettato
+### 11.3 Accesso SQL, costi e condizioni
 
-Guber accede alla replica con:
-
-- ruoli read-only;
-- identità nominali;
-- auditing;
-- viste o schema certificato se necessario;
-- limitazioni su query e risorse;
-- separazione completa dal database primario.
-
-## 11.4 Costi di pianificazione
+Guber accede con ruoli read-only, identità nominali, auditing, viste o schema certificato se necessario, limitazioni su query e risorse e separazione completa dal database primario.
 
 | Voce | Range indicativo |
 |---|---:|
@@ -894,7 +889,50 @@ Guber accede alla replica con:
 | test consistenza e performance | € 5.000–12.000 |
 | **Totale una tantum** | **€ 25.000–64.000** |
 
-Costi ricorrenti della replica:
+| Voce | Range indicativo mensile |
+|---|---:|
+| compute/database replica | € 600–2.000 |
+| storage e backup | € 150–600 |
+| rete, logging e monitoring | € 150–600 |
+| **Totale mensile** | **€ 900–3.200** |
+
+**TCO indicativo a 3 anni:** **€ 57.000–179.000**, escluso AM Novigo. La stima resta parametrica e dipende da capacità on-premise Guber, connettività, licenze, SLA, dimensionamento e AM; non introduce costi aggiuntivi rispetto al precedente scenario replica.
+
+### 11.4 Vantaggi, limiti e AM
+
+- soddisfa il requisito SQL accettato senza migrazione immediata del primario;
+- isola i carichi di consultazione, mantiene ownership della replica Guber, riduce il rischio di cutover e mantiene un percorso graduale e reversibile;
+- dati non necessariamente in tempo reale, dipendenza dalla tecnologia di replica, gestione del lag e della consistenza, doppio ambiente, mancato trasferimento della piena ownership del transazionale e possibili limitazioni su stored procedure o funzionalità specifiche restano da governare.
+
+Con AM Novigo, Novigo gestisce primario, replica, sincronizzazione, troubleshooting end-to-end, backup/recovery, accessi e auditing. Con gestione Guber o terzo, devono essere separati chiaramente gli owner del primario e della replica; il troubleshooting cross-environment può essere più complesso.
+
+## Scenario 06 — Replica read-only su Azure Guber
+
+### 11.5 Provenienza e classificazione
+
+Lo scenario deriva dalla medesima deduzione architetturale successivamente accettata da Guber: permanenza del primario, requisito SQL e replica read-only.
+
+### 11.6 Architettura e collocazione
+
+- database primario NOVA nell'infrastruttura attuale, invariato;
+- replica read-only nel tenant Azure Guber;
+- Guber accede via SQL esclusivamente alla replica;
+- identity, audit, accessi e chiavi sono gestiti nel perimetro Azure Guber;
+- sincronizzazione tramite tecnologia compatibile con il motore;
+- monitoring di replica, lag e consistenza;
+- procedure di rebuild e recovery.
+
+### 11.7 Accesso SQL, costi e condizioni
+
+Guber accede con ruoli read-only, identità nominali, auditing, viste o schema certificato se necessario, limitazioni su query e risorse e separazione completa dal database primario.
+
+| Voce | Range indicativo |
+|---|---:|
+| assessment replica e compatibilità | € 5.000–12.000 |
+| implementazione e configurazione | € 10.000–25.000 |
+| networking e sicurezza | € 5.000–15.000 |
+| test consistenza e performance | € 5.000–12.000 |
+| **Totale una tantum** | **€ 25.000–64.000** |
 
 | Voce | Range indicativo mensile |
 |---|---:|
@@ -903,43 +941,17 @@ Costi ricorrenti della replica:
 | rete, logging e monitoring | € 150–600 |
 | **Totale mensile** | **€ 900–3.200** |
 
-**TCO indicativo a 3 anni:** **€ 57.000–179.000**, escluso AM Novigo.
+**TCO indicativo a 3 anni:** **€ 57.000–179.000**, escluso AM Novigo. La stima resta parametrica e dipende da servizi Azure, connettività, licenze, SLA, dimensionamento e AM; non introduce costi aggiuntivi rispetto al precedente scenario replica.
 
-## 11.5 Vantaggi
+### 11.8 Vantaggi, limiti e AM
 
-- soddisfa il requisito SQL accettato;
-- nessuna migrazione immediata del primario;
-- isolamento dei carichi di consultazione;
-- ownership della replica Guber;
-- rischio di cutover ridotto;
-- percorso graduale e reversibile.
+- soddisfa il requisito SQL accettato senza migrazione immediata del primario;
+- isola i carichi di consultazione, mantiene ownership della replica Guber, riduce il rischio di cutover e mantiene un percorso graduale e reversibile;
+- dati non necessariamente in tempo reale, dipendenza dalla tecnologia di replica, gestione del lag e della consistenza, doppio ambiente, mancato trasferimento della piena ownership del transazionale e possibili limitazioni su stored procedure o funzionalità specifiche restano da governare.
 
-## 11.6 Svantaggi e limiti
+Con AM Novigo, Novigo gestisce primario, replica, sincronizzazione, troubleshooting end-to-end, backup/recovery, accessi e auditing. Con gestione Guber o terzo, devono essere separati chiaramente gli owner del primario e della replica; il troubleshooting cross-environment può essere più complesso.
 
-- dati non necessariamente in tempo reale;
-- dipendenza dalla tecnologia di replica;
-- gestione del lag e della consistenza;
-- doppio ambiente;
-- non trasferisce la piena ownership del transazionale;
-- eventuali limitazioni su stored procedure o funzionalità specifiche.
-
-## 11.7 Application Maintenance applicata allo scenario
-
-Con AM Novigo:
-
-- gestione del primario;
-- gestione della replica;
-- monitoring della sincronizzazione;
-- troubleshooting end-to-end;
-- backup e recovery;
-- gestione accessi e auditing.
-
-Senza AM:
-
-- devono essere separati chiaramente owner del primario e owner della replica;
-- il troubleshooting cross-environment può diventare più complesso.
-
-## 11.8 Rischi e condizioni di applicabilità
+### 11.9 Rischi e condizioni comuni agli scenari 05 e 06
 
 | Rischio | Condizione/Mitigazione |
 |---|---|
@@ -949,12 +961,7 @@ Senza AM:
 | rete instabile | connettività ridondata |
 | query pesanti | sizing e workload governance |
 
-## 11.9 Quando scegliere questo scenario
-
-- quando Guber accetta dati read-only replicati;
-- quando si vuole ridurre il rischio di migrazione;
-- quando l'ownership immediata del primario non è indispensabile;
-- quando serve una soluzione rapida e reversibile.
+Gli scenari 05 e 06 sono appropriati quando Guber accetta dati read-only replicati, si vuole ridurre il rischio di migrazione, l'ownership immediata del primario non è indispensabile e serve una soluzione rapida e reversibile.
 
 ---
 
@@ -962,7 +969,7 @@ Senza AM:
 
 ## 12.1 Principio
 
-L'Application Maintenance Novigo è applicabile a tutti i cinque scenari. Non rappresenta una collocazione del database, ma un modello operativo.
+L'Application Maintenance Novigo è applicabile a tutti i sei scenari. Non rappresenta una collocazione del database, ma un modello operativo. Negli scenari 05 e 06 deve essere confrontata esplicitamente con la gestione Guber o di un terzo.
 
 Il servizio comprende la gestione completa dell'ambiente e dei servizi, salvo esclusioni esplicite.
 
@@ -1109,7 +1116,7 @@ L'orchestratore deve restare vicino all'applicazione e al database oppure può o
 - scenario attuale: impatto minimo;
 - Azure/AWS DB-only: forte dipendenza dalla WAN;
 - on-premise DB-only: dipendenza dalla connettività verso Guber;
-- scenario 5: replica asincrona e monitoring della consistenza;
+- scenari 05 e 06: replica asincrona e monitoring della consistenza;
 - full-stack: maggiore costo iniziale ma minore accoppiamento cross-environment.
 
 ## 15.4 Proposta evolutiva indipendente dallo scenario
@@ -1122,16 +1129,16 @@ L'orchestratore dovrebbe essere reso più osservabile, configurabile e resilient
 
 ## 16.1 Matrice qualitativa
 
-| Criterio | Attuale | Azure Guber | AWS Guber | On-premise Guber | Primario + replica Guber |
-|---|---:|---:|---:|---:|---:|
-| rapidità | alta | media-bassa | media-bassa | bassa | alta-media |
-| rischio migrazione | basso | medio-alto | medio-alto | alto | basso-medio |
-| ownership Guber | bassa | alta | alta | alta | media-alta sulla replica |
-| accesso SQL | medio-alto | alto | alto | alto | alto |
-| elasticità | media | alta | alta | bassa-media | dipende dalla replica |
-| complessità operativa | bassa-media | media | media | alta | media |
-| compatibilità con AM Novigo | alta | alta | alta | alta | alta |
-| reversibilità | alta | media | media | bassa | alta |
+| Criterio | 01 Attuale | 02 Azure primario | 03 AWS primario | 04 On-premise primario | 05 Replica on-premise | 06 Replica Azure |
+|---|---:|---:|---:|---:|---:|---:|
+| rapidità | alta | media-bassa | media-bassa | bassa | alta-media | alta-media |
+| rischio migrazione | basso | medio-alto | medio-alto | alto | basso-medio | basso-medio |
+| ownership Guber | bassa | alta | alta | alta | media-alta sulla replica | media-alta sulla replica |
+| accesso SQL | medio-alto | alto | alto | alto | alto | alto |
+| elasticità | media | alta | alta | bassa-media | dipende dalla replica | dipende dalla replica |
+| complessità operativa | bassa-media | media | media | alta | media | media |
+| compatibilità con AM Novigo | alta | alta | alta | alta | alta | alta |
+| reversibilità | alta | media | media | bassa | alta | alta |
 
 ## 16.2 Confronto dei modelli operativi
 
@@ -1148,7 +1155,8 @@ L'orchestratore dovrebbe essere reso più osservabile, configurabile e resilient
 | Azure Guber | € 49k–128k | € 1,75k–5,3k | € 112k–319k |
 | AWS Guber | € 49k–128k | € 1,65k–5,2k | € 108k–315k |
 | On-premise Guber | € 71k–208k | € 1,4k–4,5k | € 121k–370k |
-| Primario + replica Guber | € 25k–64k | € 0,9k–3,2k | € 57k–179k |
+| Replica on-premise Guber | € 25k–64k | € 0,9k–3,2k | € 57k–179k |
+| Replica Azure Guber | € 25k–64k | € 0,9k–3,2k | € 57k–179k |
 
 ### Lettura corretta dei numeri
 
@@ -1159,16 +1167,18 @@ L'orchestratore dovrebbe essere reso più osservabile, configurabile e resilient
 - non includono DR geografico;
 - devono essere aggiornati con dati reali.
 
+Per gli scenari 05 e 06 gli stessi range sono mantenuti come stima parametrica: il primo dipende dalla capacità on-premise Guber, il secondo dai servizi Azure; entrambi dipendono anche da connettività, licenze, SLA, dimensionamento e AM. Le righe restano alternative e non vanno sommate tra loro né con i costi del primario.
+
 ---
 
 # 17. Gate decisionali prima del punteggio
 
 | Gate | Impatto |
 |---|---|
-| accesso read-only alla replica accettato da Guber | scenario 5 pienamente valutabile |
-| AWS standard Guber | rafforza scenario 3 |
-| Azure standard Guber | rafforza scenario 2 |
-| capacità on-premise esistente | può ridurre costi scenario 4 |
+| accesso read-only alla replica accettato da Guber | scenari 05 e 06 pienamente valutabili |
+| AWS standard Guber | rafforza scenario 03 |
+| Azure standard Guber | rafforza scenario 02 |
+| capacità on-premise esistente | può ridurre costi scenario 04 |
 | compatibilità PaaS | riduce costi e rischio cloud |
 | ownership account obbligatoria | penalizza scenario attuale |
 | AM Novigo richiesta | uniforma il run nei diversi scenari |
@@ -1182,7 +1192,7 @@ L'orchestratore dovrebbe essere reso più osservabile, configurabile e resilient
 
 ### Velocità 1 – soddisfare il requisito dati
 
-Guber ha accettato l’accesso SQL a una replica read-only sotto propria governance. Privilegiare quindi lo **scenario 5** come alternativa pienamente comparabile: può essere realizzato in AWS, Azure o on-premise Guber e gestito end-to-end da Novigo. È meno rischioso di una migrazione immediata e può restare un target stabile.
+Guber ha accettato l’accesso SQL a una replica read-only sotto propria governance. Privilegiare quindi gli **scenari 05 e 06** come alternative pienamente comparabili: replica on-premise Guber oppure su Azure Guber, gestibili end-to-end da Novigo. Sono meno rischiosi di una migrazione immediata e possono restare target stabili.
 
 ### Velocità 2 – decidere il target della piattaforma
 
@@ -1202,7 +1212,7 @@ Confrontare AWS, Azure e on-premise sulla base di:
 - scegliere Azure se è standard strategico Guber;
 - scegliere on-premise solo con capacità, competenze o vincoli specifici;
 - scegliere scenario attuale per rapidità e rischio minimo;
-- scegliere scenario 5 per accesso SQL senza migrazione immediata.
+- scegliere gli scenari 05 o 06 per accesso SQL senza migrazione immediata, in funzione della collocazione on-premise o Azure della replica.
 
 ## 18.3 Baseline operativa raccomandata
 
@@ -1217,8 +1227,8 @@ Per ambienti Guber:
 
 ## 18.4 Decisione minima attesa il 31 luglio
 
-1. confermare i cinque scenari;
-2. scegliere la collocazione preferita della replica read-only;
+1. confermare i sei scenari organizzati nelle due strategie;
+2. scegliere la collocazione preferita della replica read-only: on-premise Guber o Azure Guber;
 3. confermare il modello AM;
 4. autorizzare assessment tecnico ed economico;
 5. definire owner e tempi.
@@ -1261,15 +1271,15 @@ Hosting, accesso, run, deployment, scope.
 
 Distinguere evidenze e assunzioni.
 
-## Slide 6 – I cinque scenari a confronto
+## Slide 6 – Sei scenari, due strategie per rispondere al requisito dati
 
-Vista sintetica.
+Un unico requisito dati può essere soddisfatto trasferendo il primario oppure replicando i dati presso Guber. Distinguere visivamente Strategia A: collocazione del primario (01–04) e Strategia B: replica read-only (05–06), senza ranking o raccomandazioni nella mappa.
 
-## Slide 7 – Scenario 5: replica read-only presso Guber
+## Slide 7 – Scenari 05 e 06: replica read-only presso Guber
 
-Architettura, costi, pro e contro.
+Confrontare replica on-premise Guber e replica su Azure Guber: primario invariato, architettura, costi parametrici, pro e contro.
 
-## Slide 8 – Scenario 1: infrastruttura attuale
+## Slide 8 – Scenario 01: infrastruttura attuale
 
 Costi, pro e contro.
 
@@ -1281,7 +1291,7 @@ Ownership e gestione.
 
 Ownership e gestione.
 
-## Slide 11 – Scenario 4: on-premise Guber
+## Slide 11 – Scenario 04: on-premise Guber
 
 Costi, pro e contro.
 
@@ -1319,7 +1329,7 @@ Criteri che cambiano la scelta.
 
 ## Slide 20 – Raccomandazione
 
-Scenario 5 per il requisito dati; target da scegliere tra AWS, Azure e on-premise.
+Scenari 05 e 06 per il requisito dati; target del primario da scegliere tra infrastruttura attuale, AWS, Azure e on-premise.
 
 ## Slide 21 – Decisioni e prossimi passi
 
@@ -1378,7 +1388,7 @@ Owner, tempi, assessment.
 - tariffa giornaliera;
 - AM.
 
-## Foglio 2 – Scenario 1: infrastruttura attuale
+## Foglio 2 – Scenario 01: infrastruttura attuale
 
 - una tantum;
 - costi incrementali;
@@ -1387,7 +1397,7 @@ Owner, tempi, assessment.
 - ricavi;
 - margine.
 
-## Foglio 3 – Scenario 2: Azure Guber
+## Foglio 3 – Scenario 02: Azure Guber
 
 - migrazione;
 - servizi Azure;
@@ -1398,7 +1408,7 @@ Owner, tempi, assessment.
 - ricavi;
 - margine.
 
-## Foglio 4 – Scenario 3: AWS Guber
+## Foglio 4 – Scenario 03: AWS Guber
 
 - migrazione;
 - RDS/EC2;
@@ -1410,10 +1420,10 @@ Owner, tempi, assessment.
 - ricavi;
 - margine.
 
-## Foglio 5 – Scenario 5: replica read-only presso Guber
+## Foglio 5 – Scenario 05: replica read-only on-premise Guber
 
 - implementazione replica;
-- piattaforma destinazione;
+- capacità on-premise Guber;
 - networking;
 - monitoring;
 - AM;
@@ -1421,7 +1431,18 @@ Owner, tempi, assessment.
 - ricavi;
 - margine.
 
-## Foglio 6 – Application Maintenance end-to-end
+## Foglio 6 – Scenario 06: replica read-only su Azure Guber
+
+- implementazione replica;
+- servizi Azure;
+- networking;
+- monitoring;
+- AM;
+- TCO;
+- ricavi;
+- margine.
+
+## Foglio 7 – Application Maintenance end-to-end
 
 - setup;
 - canone;
@@ -1431,7 +1452,7 @@ Owner, tempi, assessment.
 - extra;
 - exit.
 
-## Foglio 7 – Scenario 4: on-premise Guber
+## Foglio 8 – Scenario 04: on-premise Guber
 
 - hardware;
 - storage;
@@ -1443,7 +1464,7 @@ Owner, tempi, assessment.
 - ricavi;
 - margine.
 
-## Foglio 8 – Ricavi e margini
+## Foglio 9 – Ricavi e margini
 
 - ricavi una tantum;
 - ricavi ricorrenti;
@@ -1451,7 +1472,7 @@ Owner, tempi, assessment.
 - margine lordo;
 - cash flow.
 
-## Foglio 9 – Comparativa
+## Foglio 10 – Comparativa
 
 - TCO;
 - score;
@@ -1500,9 +1521,9 @@ Le fonti esterne supportano fattibilità e struttura dei costi, non costituiscon
 
 # 24. Conclusione da usare come messaggio finale della presentazione
 
-Guber dispone di cinque alternative reali per la collocazione del database NOVA.
+Guber dispone di sei scenari organizzati in due strategie: collocazione del database primario oppure mantenimento del primario attuale con replica read-only presso Guber.
 
-Lo scenario 5 consente di soddisfare il requisito SQL accettato senza migrare immediatamente il database primario e rappresenta l'opzione con il miglior equilibrio iniziale tra rischio, reversibilità e time-to-value.
+Gli scenari 05 e 06 consentono di soddisfare il requisito SQL accettato senza migrare immediatamente il database primario: il primo colloca la replica on-premise Guber, il secondo su Azure Guber. Rappresentano le opzioni con il miglior equilibrio iniziale tra rischio, reversibilità e time-to-value.
 
 AWS e Azure devono essere confrontati come target strategici sulla base degli standard Guber, della compatibilità del database e del TCO completo. L’on-premise resta uno scenario condizionato dalla disponibilità di capacità, competenze e requisiti di continuità operativa presso Guber.
 

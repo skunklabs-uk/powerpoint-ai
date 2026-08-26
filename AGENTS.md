@@ -2,11 +2,11 @@
 
 ## Agent OS e lifecycle delle skill
 
-- Prima di analizzare, pianificare, modificare o creare issue o pull request, si DEVE leggere integralmente la versione corrente di [RFC-0001 – Principi fondanti della Software Factory](https://github.com/ignazio-ingenito/agent-os/blob/main/rfcs/RFC-0001-principles.md).
+- Prima di analizzare, pianificare, modificare o creare issue o pull request, si DEVE leggere integralmente la versione corrente di [RFC-0001 – Principi fondanti della Software Factory](https://github.com/skunklabs-uk/agent-os/blob/main/rfcs/RFC-0001-principles.md).
 - Se la fonte non è accessibile, il lavoro DEVE fermarsi.
 - Le regole locali possono restringere la RFC, ma non indebolirla; conflitti o deroghe richiedono l'autorizzazione esplicita dell'utente o di una fonte attiva approvata di autorità superiore.
 - Il contenuto della RFC non DEVE essere duplicato in questo repository.
-- Le skill riusabili hanno una sola sorgente nel [repository codex-skills](https://github.com/ignazio-ingenito/codex-skills). Nei progetti vanno installate tramite symlink con `scripts/install-project.sh`, senza copiare o modificare manualmente le directory installate.
+- Le skill riusabili hanno una sola sorgente nel [repository codex-skills](https://github.com/skunklabs-uk/codex-skills). Nei progetti vanno installate tramite symlink con `scripts/install-project.sh`, senza copiare o modificare manualmente le directory installate.
 
 ## Scopo
 
@@ -68,6 +68,16 @@ Quando Codex procede usando assunzioni, deve renderlo noto esplicitamente anche 
 - quali domande restano da porre prima del passaggio successivo.
 
 Non inserire in un deliverable domande formulate come "approval questions" se non sono state effettivamente poste all'utente. Usare invece una sezione esplicita come "Domande da porre prima del prossimo step" o "Assunzioni usate per procedere".
+
+## Arresto e prosecuzione
+
+Le condizioni di stop e i livelli di conferma definiti in `.codex/execution.md` restano vincolanti per l'azione che li richiede. Il blocco di un deck, una fonte, un'operazione esterna o un passaggio non blocca automaticamente l'intera missione: il lavoro già autorizzato e determinato che non dipende da quella condizione deve proseguire.
+
+Prima di fermarsi, indicare la condizione applicabile, il fatto osservato e la decisione o informazione necessaria.
+
+Quando la fonte attiva o il task corrente identifica già il lavoro successivo necessario nella stessa missione, proseguire senza chiedere una conferma meccanica, salvo che si applichi una condizione di stop reale.
+
+Non usare questa regola per aggirare i livelli E3-E5 di `.codex/execution.md`, le conferme su contenuti cliente o il divieto di inventare informazioni mancanti.
 
 ## Lettura Obbligatoria
 

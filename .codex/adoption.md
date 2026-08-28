@@ -5,7 +5,7 @@ Authority Class: Repository Policy
 Owner: Repository Owner
 Scope: Agent workflow for commercial and business-case PowerPoint production
 Created: 2026-06-05
-Last Reviewed: 2026-06-05
+Last Reviewed: 2026-08-28
 Review Cadence: Quarterly or when deck-production standards change
 Supersedes: None
 Superseded By: None
@@ -20,9 +20,7 @@ The purpose is not to automate deck generation blindly. The purpose is to give C
 
 # Agent OS Source
 
-The design reference is:
-
-`/home/iingenito/projects/personal/agent-os`
+The design reference is the current [`skunklabs-uk/agent-os`](https://github.com/skunklabs-uk/agent-os) repository.
 
 The repository-specific rules in this repo take precedence over the generic Agent OS reference when producing decks.
 

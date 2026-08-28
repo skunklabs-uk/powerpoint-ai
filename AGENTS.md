@@ -34,18 +34,23 @@ Prima di lavori non banali, Codex deve leggere:
 
 Usare questi file per scegliere route, autorità delle fonti, policy di esecuzione, quality gate e handoff.
 
-Le skill locali in `.codex/skills/` definiscono la pipeline operativa per proposte commerciali e business case:
+Le skill riusabili della pipeline hanno come unica fonte
+[`skunklabs-uk/codex-skills/projects/powerpoint`](https://github.com/skunklabs-uk/codex-skills/tree/main/projects/powerpoint):
 
-- `.codex/skills/proposal-intake/SKILL.md`
-- `.codex/skills/repo-to-deck-brief/SKILL.md`
-- `.codex/skills/business-case-storyline/SKILL.md`
-- `.codex/skills/software-delivery-estimation/SKILL.md`
-- `.codex/skills/executive-slide-writing/SKILL.md`
-- `.codex/skills/deck-visual-grounding/SKILL.md`
-- `.codex/skills/pptx-template-extraction/SKILL.md`
-- `.codex/skills/powerpoint-manipulation/SKILL.md`
-- `.codex/skills/pptx-package-validation/SKILL.md`
-- `.codex/skills/commercial-deck-quality-review/SKILL.md`
+- `proposal-intake`
+- `repo-to-deck-brief`
+- `business-case-storyline`
+- `software-delivery-estimation`
+- `executive-slide-writing`
+- `deck-visual-grounding`
+- `pptx-template-extraction`
+- `powerpoint-manipulation`
+- `pptx-package-validation`
+- `commercial-deck-quality-review`
+
+Usarle tramite i symlink installati quando sono disponibili e materialmente
+utili. La pipeline descritta sotto resta applicabile anche mediante verifica
+diretta equivalente; l'assenza di una skill non blocca da sola il lavoro.
 
 Per proposte/business case di sviluppo software, usare una pipeline quality-first:
 

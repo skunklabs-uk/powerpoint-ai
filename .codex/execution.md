@@ -5,7 +5,7 @@ Authority Class: Repository Policy
 Owner: Repository Owner
 Scope: What Codex may execute or modify while producing decks
 Created: 2026-06-05
-Last Reviewed: 2026-06-05
+Last Reviewed: 2026-08-28
 Review Cadence: Quarterly
 Supersedes: None
 Superseded By: None
@@ -28,7 +28,7 @@ Allowed without confirmation:
 Allowed when requested or clearly implied:
 
 - create or edit markdown guidance;
-- create or edit local skills;
+- update references to reusable skills; create or edit the skills themselves only through the separately authorized `skunklabs-uk/codex-skills` workflow;
 - create non-deliverable working notes;
 - update prompts or checklists.
 

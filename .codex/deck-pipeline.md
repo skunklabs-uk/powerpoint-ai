@@ -5,11 +5,11 @@ Authority Class: Repository Policy
 Owner: Repository Owner
 Scope: Pipeline for commercial proposals and business cases for software-development projects
 Created: 2026-06-05
-Last Reviewed: 2026-06-05
+Last Reviewed: 2026-08-28
 Review Cadence: Quarterly
 Supersedes: None
 Superseded By: None
-Related Artifacts: AGENTS.md, .codex/routing.md, .codex/skills/*
+Related Artifacts: AGENTS.md, .codex/routing.md, skunklabs-uk/codex-skills/projects/powerpoint/*
 Invalidation Triggers: new deck standard, new template, recurring quality failure, new deck type
 
 # Goal
@@ -84,7 +84,7 @@ If Codex proceeds with minor assumptions, it must disclose them in the user-faci
 
 Questions that were not actually asked must not be presented as approved gates. Label them as "questions to ask before the next step" or "open questions", and state whether Codex proceeded because they were non-blocking for the current phase.
 
-When the input is a software repository, use `.codex/skills/repo-to-deck-brief/SKILL.md` before deck planning.
+When the input is a software repository, use `repo-to-deck-brief` before deck planning when the installed skill is available and materially useful.
 
 ## 2. Grounding
 
@@ -137,7 +137,7 @@ For software-development projects, the TO BE should connect:
 - delivery approach;
 - operational and business impact.
 
-For standard TXT/Novigo proposal and business-case decks, the TO BE must include a WBS view derived from `.codex/skills/wbs-generation/SKILL.md`:
+For standard TXT/Novigo proposal and business-case decks, the TO BE must include a WBS view; use `wbs-generation` when the installed skill is available and materially useful:
 
 - for a new application, create a new WBS;
 - for an existing application, create a WBS focused on the modified section or affected scope;
@@ -145,7 +145,7 @@ For standard TXT/Novigo proposal and business-case decks, the TO BE must include
 
 Slide titles must state the message of the slide, not only the section label.
 
-Use `.codex/skills/executive-slide-writing/SKILL.md` when drafting or compressing slide language.
+Use `executive-slide-writing` when the installed skill is available and materially useful for drafting or compressing slide language.
 
 For CEO, portfolio, or multi-initiative decks, apply a CEO-readiness pattern:
 
@@ -166,7 +166,7 @@ Before producing slides:
 - inspect `docs/template.pptx` when creating a new deck;
 - inspect the source deck when revising one.
 
-Use `.codex/skills/pptx-template-extraction/SKILL.md` when a reusable visual-system brief is needed.
+Use `pptx-template-extraction` when the installed skill is available and materially useful for a reusable visual-system brief.
 
 When `docs/template.pdf` exists, treat it as the primary visual fidelity reference because it captures the exported appearance of the PowerPoint template. Keep `docs/template.pptx` as the editable source for masters, layouts, theme parts, and reusable assets.
 
@@ -228,9 +228,9 @@ Ask for approval when the plan changes commercial positioning, economics, or sco
 
 Before moving from Markdown planning artifacts to PPTX generation, ask the user any remaining questions that affect audience, positioning, economics, baseline metrics, output fidelity, or customer-facing claims. Do not generate the PPTX while those questions are only listed inside an artifact.
 
-For software-development estimates, use `.codex/skills/software-delivery-estimation/SKILL.md` to produce delivery phases, effort ranges, role mix, dependencies, risks, and estimate assumptions. These estimates are delivery inputs, not binding pricing.
+For software-development estimates, produce delivery phases, effort ranges, role mix, dependencies, risks, and estimate assumptions; use `software-delivery-estimation` when the installed skill is available and materially useful. These estimates are delivery inputs, not binding pricing.
 
-Use `.codex/skills/wbs-generation/SKILL.md` during standard deck planning to create the WBS view required by the TXT/Novigo storyline. The WBS must be source-grounded, deliverable-oriented, and distinct from roadmap, macro Gantt, backlog, and implementation task list. For small or early-stage decks, create a compact executive WBS with assumptions/open points rather than dropping the slide.
+During standard deck planning, create the WBS view required by the TXT/Novigo storyline; use `wbs-generation` when the installed skill is available and materially useful. The WBS must be source-grounded, deliverable-oriented, and distinct from roadmap, macro Gantt, backlog, and implementation task list. For small or early-stage decks, create a compact executive WBS with assumptions/open points rather than dropping the slide.
 
 For executive proposal decks, distinguish the strategic evolution roadmap from the implementation macro plan. The roadmap explains how the product, service, or capability evolves over releases and business cases. The macro plan explains feasible delivery phases, indicative ranges, milestones, releases, replanning points, and run/maintenance where relevant. When `docs/gantt.pdf` is available, use it as the planning reference for the macro plan. Do not turn the macro-plan slide into a detailed WBS or a list of individual implementation tasks unless the user explicitly asks for an operational plan.
 
@@ -241,7 +241,7 @@ Create or update the `.pptx`:
 - keep it editable in PowerPoint;
 - use real text boxes, shapes, tables, connectors, and PowerPoint-native objects;
 - use images only for visual assets;
-- use `.codex/skills/powerpoint-manipulation/SKILL.md` for package inspection, editing, validation, repair, and export;
+- use `powerpoint-manipulation` when the installed skill is available and materially useful for package inspection, editing, validation, repair, and export;
 - prefer `pptxgenjs` for generated decks only when a generation script/dependency is intentionally added for the task;
 - keep scripts under `scripts/`;
 - save final deliverables in the relevant presentation folder.

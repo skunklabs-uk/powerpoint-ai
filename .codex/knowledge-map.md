@@ -5,7 +5,7 @@ Authority Class: Repository Policy
 Owner: Repository Owner
 Scope: Where agents find knowledge for deck-production work
 Created: 2026-06-05
-Last Reviewed: 2026-06-05
+Last Reviewed: 2026-08-28
 Review Cadence: Quarterly
 Supersedes: None
 Superseded By: None
@@ -42,20 +42,23 @@ Use for:
 - quality gates;
 - deck pipeline.
 
-# Local Skills
+# Reusable Skills
 
-Location:
+Canonical source: `skunklabs-uk/codex-skills/projects/powerpoint`.
 
-- `.codex/skills/proposal-intake/SKILL.md`
-- `.codex/skills/repo-to-deck-brief/SKILL.md`
-- `.codex/skills/business-case-storyline/SKILL.md`
-- `.codex/skills/software-delivery-estimation/SKILL.md`
-- `.codex/skills/executive-slide-writing/SKILL.md`
-- `.codex/skills/deck-visual-grounding/SKILL.md`
-- `.codex/skills/pptx-template-extraction/SKILL.md`
-- `.codex/skills/powerpoint-manipulation/SKILL.md`
-- `.codex/skills/pptx-package-validation/SKILL.md`
-- `.codex/skills/commercial-deck-quality-review/SKILL.md`
+Use installed symlinks when available and materially useful. Their absence does
+not block equivalent direct execution of the repository pipeline:
+
+- `proposal-intake`
+- `repo-to-deck-brief`
+- `business-case-storyline`
+- `software-delivery-estimation`
+- `executive-slide-writing`
+- `deck-visual-grounding`
+- `pptx-template-extraction`
+- `powerpoint-manipulation`
+- `pptx-package-validation`
+- `commercial-deck-quality-review`
 
 Use for:
 

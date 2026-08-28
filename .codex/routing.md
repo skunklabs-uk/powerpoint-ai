@@ -5,7 +5,7 @@ Authority Class: Repository Policy
 Owner: Repository Owner
 Scope: How Codex routes requests in this deck-production repository
 Created: 2026-06-05
-Last Reviewed: 2026-06-05
+Last Reviewed: 2026-08-28
 Review Cadence: Quarterly
 Supersedes: None
 Superseded By: None
@@ -36,18 +36,20 @@ Required overlays:
 - Research overlay only when external facts, vendors, technologies, market data, pricing, regulations, or current information are needed.
 - Security/Privacy overlay when customer material, transcripts, confidential references, or personal data are present.
 
-Required local skills:
+Preferred reusable skills are sourced from
+`skunklabs-uk/codex-skills/projects/powerpoint`. Use installed symlinks when
+available and materially useful; equivalent direct execution remains valid:
 
-- `.codex/skills/proposal-intake`
-- `.codex/skills/repo-to-deck-brief`
-- `.codex/skills/business-case-storyline`
-- `.codex/skills/software-delivery-estimation`
-- `.codex/skills/executive-slide-writing`
-- `.codex/skills/deck-visual-grounding`
-- `.codex/skills/pptx-template-extraction`
-- `.codex/skills/powerpoint-manipulation`
-- `.codex/skills/pptx-package-validation`
-- `.codex/skills/commercial-deck-quality-review`
+- `proposal-intake`
+- `repo-to-deck-brief`
+- `business-case-storyline`
+- `software-delivery-estimation`
+- `executive-slide-writing`
+- `deck-visual-grounding`
+- `pptx-template-extraction`
+- `powerpoint-manipulation`
+- `pptx-package-validation`
+- `commercial-deck-quality-review`
 
 ## Improve Existing Deck
 
@@ -116,7 +118,7 @@ No file changes. Answer from current context or after reading relevant docs.
 
 ## Level 1: Local Reversible
 
-Small text edits to one non-authoritative file or one local skill.
+Small text edits to one non-authoritative file or one reusable-skill reference.
 
 Minimum rigor:
 
@@ -126,7 +128,7 @@ Minimum rigor:
 
 ## Level 2: Workflow-Level
 
-Changes to one workflow, local skill, prompt, or checklist.
+Changes to one workflow, reusable-skill integration, prompt, or checklist.
 
 Minimum rigor:
 

@@ -5,7 +5,7 @@ Authority Class: Repository Policy
 Owner: Repository Owner
 Scope: Lifecycle and maintenance of durable repository knowledge
 Created: 2026-06-05
-Last Reviewed: 2026-06-05
+Last Reviewed: 2026-08-28
 Review Cadence: Quarterly
 Supersedes: None
 Superseded By: None
@@ -126,5 +126,5 @@ Review these periodically:
 
 - whether `AGENTS.md` points to the right folders;
 - whether `docs/ui/README.md` matches actual visual references;
-- whether local skills duplicate or contradict global skills;
+- whether installed skill links still resolve to the canonical `skunklabs-uk/codex-skills` source and match repository policy;
 - whether generated scripts still match the current visual system.

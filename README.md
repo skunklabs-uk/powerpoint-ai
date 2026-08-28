@@ -30,7 +30,7 @@ Ogni artefatto finale deve passare da `Critic`, `Review` e ultima passata `human
 |---|---|
 | `AGENTS.md` | Regole operative principali |
 | `.codex/deck-pipeline.md` | Pipeline end-to-end |
-| `.codex/skills/` | Skill locali per le fasi del workflow |
+| `skunklabs-uk/codex-skills/projects/powerpoint/` | Fonte unica delle skill riusabili per le fasi del workflow |
 | `CONTEXT.md` | Glossario del dominio deck |
 | `docs/reference*.md` | Metodo commerciale e storyline standard |
 | `docs/ui/` | Reference visuali |

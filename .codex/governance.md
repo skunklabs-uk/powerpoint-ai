@@ -5,7 +5,7 @@ Authority Class: Repository Policy
 Owner: Repository Owner
 Scope: Lifecycle and maintenance of durable repository knowledge
 Created: 2026-06-05
-Last Reviewed: 2026-08-28
+Last Reviewed: 2026-09-15
 Review Cadence: Quarterly
 Supersedes: None
 Superseded By: None
@@ -74,8 +74,7 @@ Use these states in durable docs when relevant:
 
 - Draft: useful but not yet accepted.
 - Active: currently authoritative.
-- Superseded: replaced by a newer artifact.
-- Archived: retained for history only.
+- Archived: non più applicabile oppure sostituito da una fonte più recente; registrare la sostituzione nel campo `Superseded By`.
 
 # Required Header
 

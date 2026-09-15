@@ -373,3 +373,31 @@ yyyy-mm-dd-<nome-progetto>/2026_CLIENTE_001 - Cliente - Titolo proposta.pdf
 - Non installare dipendenze se non servono davvero.
 - Non usare reference visuali come fonte di fatti cliente.
 - Non usare GitNexus per questo repo, salvo introduzione futura di codice riusabile complesso.
+
+## Collegamento al workspace
+
+Il collegamento adottato nella [missione Homelab #1265](https://github.com/skunklabs-uk/homelab/issues/1265) opera su un incarico delimitato da repository e thread,
+branch/head dello snapshot e prompt versionato. Gli input sono qualificati
+per fonte e revisione; il consumer lavora in modo seriale entro il perimetro
+assegnato.
+
+Per l’incarico di adozione, il risultato è un report informativo E0:
+il coordinatore verifica la proposta e registra l’accettazione con RETURN. Questi passaggi
+restano distinti dall’eventuale applicazione della nota nel branch normale
+e dal successivo merge. Il branch snapshot senza parent non viene integrato.
+
+Restano validi i livelli E0–E6 e le conferme previste da
+[execution.md](.codex/execution.md). Il collegamento non autorizza la
+trasmissione di dati cliente, la produzione di slide o nuove azioni esterne.
+La produzione e verifica dei deck seguono la
+[pipeline esistente](.codex/deck-pipeline.md), con i passaggi finali
+Critic, Review e humanize previsti da AGENTS.md.
+
+Per il funzionamento del collegamento, consultare il
+[runbook](https://github.com/skunklabs-uk/developer-workspace/blob/main/docs/WORKSPACE-HANDOFF.md)
+e il
+[README runtime Homelab](https://github.com/skunklabs-uk/homelab/blob/main/gitops/apps/developer-workspace/README.md).
+
+La preview Kubernetes HTTP non è applicabile a questo repository
+documentale. Le eventuali verifiche visuali di PPTX/PDF appartengono al
+lavoro sui deck e non vengono eseguite dal report di adozione.

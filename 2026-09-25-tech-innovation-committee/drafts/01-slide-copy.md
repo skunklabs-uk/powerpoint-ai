@@ -241,7 +241,7 @@ Lo studio si è chiuso con una decisione concreta: acquisire Qlik e passare dall
    Scelta di acquisire Qlik.
 
 3. **Passo successivo**  
-   Usare un POC reale per costruire competenze e un asset spendibile sul prossimo cliente.
+   Usare un POC reale per costruire competenze e materiale riutilizzabile in presales.
 
 **Chiusura slide:**  
 La domanda ora non è più “quale piattaforma?”, ma “con quale caso iniziamo?”.
@@ -259,7 +259,7 @@ La domanda ora non è più “quale piattaforma?”, ma “con quale caso inizia
 **Label:** **Nuova iniziativa**
 
 **Messaggio chiave:**  
-Il primo POC deve diventare anche un asset di presales: qualcosa che possiamo mostrare e riutilizzare quando arriverà il prossimo caso cliente.
+Il primo POC deve lasciarci anche qualcosa da mostrare in presales e da riutilizzare quando arriverà il prossimo caso cliente.
 
 ### Candidato 1 — Dashboard NPL / Cheleo
 
@@ -318,7 +318,7 @@ Il POC ha superato la fase di idea: esiste un prototipo funzionante e abbiamo gi
 - Base concreta per valutare industrializzazione e utilizzo su casi reali.
 
 **Chiusura slide:**  
-Ora possiamo discutere non solo se la tecnologia funziona, ma come potrebbe essere utilizzata e valorizzata.
+Ora possiamo ragionare non solo sul funzionamento, ma anche su come usarla e con quali costi.
 
 **Visual:** POC → Prototipo → Pricing → possibile industrializzazione.
 
@@ -375,7 +375,7 @@ Il CTO sta guidando una serie di confronti per capire come introdurre l'AI in az
 - **Criteri:** come capire cosa vale la pena estendere.
 
 **Chiusura slide:**  
-L'obiettivo è passare dall'uso individuale dell'AI a un approccio aziendale coerente e governabile.
+L'obiettivo è passare dall'uso individuale dell'AI a strumenti e regole condivisi a livello aziendale.
 
 **Visual:** individual use → shared tools/processes → scalable architecture.
 
@@ -403,7 +403,7 @@ Verificare se Mentor riesce a:
 
 ### Cosa misurare
 - qualità e rilevanza delle segnalazioni;
-- quota di suggerimenti realmente azionabili;
+- quanti suggerimenti sono davvero applicabili;
 - effort risparmiato rispetto all'analisi manuale.
 
 **Chiusura slide:**  

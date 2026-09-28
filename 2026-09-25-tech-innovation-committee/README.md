@@ -23,6 +23,8 @@ I contenuti di dettaglio delle singole slide possono evolvere durante la raccolt
 - Le label di stato sono piccole e discrete; quando una slide contiene più iniziative, la label appartiene alla singola iniziativa.
 - La slide 2 sostituisce la classica agenda e introduce la narrativa del Committee.
 - Le quattro parole chiave diventano il **navigatore ricorrente** del deck.
+- Il deck non usa una banda/sezione laterale a sinistra: le slide di contenuto lavorano sul canvas pieno.
+- Il navigatore **Industrializzare · Scegliere · Riutilizzare · Misurare** resta sempre in alto a destra nelle slide di contenuto, inclusa la chiusura; la cover fa eccezione.
 
 ### Slide 2 — filo rosso del Committee
 

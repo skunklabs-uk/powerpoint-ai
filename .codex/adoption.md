@@ -22,7 +22,7 @@ The purpose is not to automate deck generation blindly. The purpose is to give C
 
 The design reference is the current [`skunklabs-uk/agent-os`](https://github.com/skunklabs-uk/agent-os) repository.
 
-The repository-specific rules in this repo take precedence over the generic Agent OS reference when producing decks.
+Per produrre deck, applicare le regole specifiche del repository entro i principi della [RFC-0001 corrente](https://github.com/skunklabs-uk/agent-os/blob/main/rfcs/RFC-0001-principles.md), come previsto da `AGENTS.md`.
 
 # Repository Mission
 

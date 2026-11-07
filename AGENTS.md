@@ -1,5 +1,9 @@
 # AGENTS.md
 
+## Functional and technical documentation
+
+For functional or technical documentation, consult the shared [Diátaxis guidance](https://github.com/skunklabs-uk/codex-skills/blob/docs/shared-documentation-guidance/AGENTS.global.md#functional-and-technical-documentation).
+
 ## Agent OS e lifecycle delle skill
 
 - Prima di analizzare, pianificare, modificare o creare issue o pull request, si DEVE leggere integralmente la versione corrente di [RFC-0001 – Principi fondanti della Software Factory](https://github.com/skunklabs-uk/agent-os/blob/main/rfcs/RFC-0001-principles.md).
